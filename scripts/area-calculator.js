@@ -46,6 +46,7 @@ function calculateRectangleArea() {
 }
 
 // ---------------------------------------------------------------
+// Rectangle area
 // reuseable function ---> reduce duplicate code
 function calculateParallelogramArea() {
   const base = getInputValue("parallelogram-base");
@@ -66,6 +67,14 @@ function getInputValue(fieldId) {
   const inputValueText = inputField.value;
   const value = parseFloat(inputValueText);
   return value;
+}
+
+// calculation Ellipse Area
+function calculateEllipseArea(){
+  const majorRadius = getInputValue('ellipse-major-radius')
+  const minorRadius = getInputValue('ellipse-minor-radius')
+  const area = 3.14 * majorRadius * minorRadius
+  setElementInnerText('Ellipse-area', area)
 }
 
 // reuseable set span text

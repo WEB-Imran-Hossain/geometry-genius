@@ -69,6 +69,14 @@ function getInputValue(fieldId) {
   return value;
 }
 
+// calculation Pentagon Area
+function calculatePentagonArea(){
+  const penta = getInputValue('pentagon-penta')
+  const gonia = getInputValue('pentagon-gonia')
+  const area = 0.5 * penta * gonia
+  setElementInnerText('pentagon-area', area)
+}
+
 // calculation Ellipse Area
 function calculateEllipseArea(){
   const majorRadius = getInputValue('ellipse-major-radius')

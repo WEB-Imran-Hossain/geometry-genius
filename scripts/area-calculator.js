@@ -40,7 +40,36 @@ function calculateRectangleArea() {
   //   get data from calculate
   const area = width * length;
 
-  //   show triangle area
-  const areaSpan = document.getElementById("rectangle-area");
-  areaSpan.innerText = area;
+  //   show Rectangle area
+  const rectangleAreaSpan = document.getElementById("rectangle-area");
+  rectangleAreaSpan.innerText = area;
+}
+
+// ---------------------------------------------------------------
+// reuseable function ---> reduce duplicate code
+function calculateParallelogramArea() {
+  const base = getInputValue("parallelogram-base");
+  //   clear the base value text
+  document.getElementById("parallelogram-base").value = "";
+  const height = getInputValue("parallelogram-height");
+  //   clear the height value text
+  document.getElementById("parallelogram-height").value = "";
+
+  //   get data from calculate
+  const area = base * height;
+  setElementInnerText("parallelogram-area", area);
+}
+
+// reuseable get input value field in number
+function getInputValue(fieldId) {
+  inputField = document.getElementById(fieldId);
+  const inputValueText = inputField.value;
+  const value = parseFloat(inputValueText);
+  return value;
+}
+
+// reuseable set span text
+function setElementInnerText(elementId, area) {
+  const element = document.getElementById(elementId);
+  element.innerText = area;
 }

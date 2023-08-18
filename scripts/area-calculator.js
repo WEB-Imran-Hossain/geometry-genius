@@ -13,13 +13,12 @@ function calculateTriangleArea() {
   //   clear the height value text
   document.getElementById("triangle-height").value = "";
 
- // validate input: base and height
- if (isNaN(base) || isNaN(height)) {
-  alert("Please insert a number");
-  return;
-}
+  // validate input: base and height
+  if (isNaN(base) || isNaN(height)) {
+    alert("Please insert a number");
+    return;
+  }
 
-  
   //   get data from calculate
   const area = 0.5 * base * height;
 
@@ -69,7 +68,7 @@ function calculateParallelogramArea() {
   const height = getInputValue("parallelogram-height");
 
   // validate input: base and height
-  if(isNaN(base) || isNaN(height)){
+  if (isNaN(base) || isNaN(height)) {
     alert("Please insert a number");
     return;
   }
@@ -90,12 +89,12 @@ function getInputValue(fieldId) {
   return value;
 }
 // calculation Rhombus Area
-function calculateRhombusArea(){
-  const diagonalOne = getInputValue('diagonal-one')
-  const diagonalTWO = getInputValue('diagonal-two')
+function calculateRhombusArea() {
+  const diagonalOne = getInputValue("diagonal-one");
+  const diagonalTWO = getInputValue("diagonal-two");
 
   // validate input: diagonal and diagonal
-  if(isNaN(diagonalOne) || isNaN(diagonalTWO)){
+  if (isNaN(diagonalOne) || isNaN(diagonalTWO)) {
     alert("Please insert a number");
     return;
   }
@@ -104,14 +103,13 @@ function calculateRhombusArea(){
   setElementInnerText("rhombus-area", area);
 }
 
-
 // calculation Pentagon Area
 function calculatePentagonArea() {
   const penta = getInputValue("pentagon-penta");
   const gonia = getInputValue("pentagon-gonia");
-   
+
   // validate input: penta and gonia
-   if(isNaN(penta) || isNaN(gonia)){
+  if (isNaN(penta) || isNaN(gonia)) {
     alert("Please insert a number");
     return;
   }
@@ -124,7 +122,7 @@ function calculateEllipseArea() {
   const majorRadius = getInputValue("ellipse-major-radius");
   const minorRadius = getInputValue("ellipse-minor-radius");
   // validate input: majorRadius and minorRadius
-  if(isNaN(majorRadius) || isNaN(minorRadius)){
+  if (isNaN(majorRadius) || isNaN(minorRadius)) {
     alert("Please insert a number");
     return;
   }
@@ -137,6 +135,25 @@ function calculateEllipseArea() {
 function setElementInnerText(elementId, area) {
   const element = document.getElementById(elementId);
   element.innerText = area;
+}
+
+// add to calculation entry
+// 1. get the element where you want to add the dynamic html
+// 2. create an element you want to add
+// 3. if needed add some class
+// 4. set inner HTML. it could be dynamic template string
+// 5. append the created element as a child of the parent
+function addToCalculationEntry(areaType, area) {
+  // console.log(areaType + "" + area);
+  const calculationEntry = document.getElementById("calculation-entry");
+  const count = calculationEntry.childElementCount
+  const p = document.createElement("p");
+  // p.innerHTML = area;
+  // p.innerHTML = areaType + ''+ area;
+  p.classList.add('my-4')
+  p.innerHTML = `${count + 1} ${areaType} ${area} cm <sup>2</sup> <button class=" btn btn-success">Convert</button>`
+
+  calculationEntry.appendChild(p);
 }
 
 // Data validation

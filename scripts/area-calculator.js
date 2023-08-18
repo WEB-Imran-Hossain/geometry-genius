@@ -13,6 +13,13 @@ function calculateTriangleArea() {
   //   clear the height value text
   document.getElementById("triangle-height").value = "";
 
+ // validate input: base and height
+ if (isNaN(base) || isNaN(height)) {
+  alert("Please insert a number");
+  return;
+}
+
+  
   //   get data from calculate
   const area = 0.5 * base * height;
 
@@ -37,6 +44,12 @@ function calculateRectangleArea() {
   //   clear the length value text
   document.getElementById("rectangle-length").value = "";
 
+  // validate input: width and length
+  if (isNaN(width) || isNaN(length)) {
+    alert("Please insert a number");
+    return;
+  }
+
   //   get data from calculate
   const area = width * length;
 
@@ -48,11 +61,19 @@ function calculateRectangleArea() {
 // ---------------------------------------------------------------
 // Rectangle area
 // reuseable function ---> reduce duplicate code
+// calculation Parallelogram Area
 function calculateParallelogramArea() {
   const base = getInputValue("parallelogram-base");
   //   clear the base value text
   document.getElementById("parallelogram-base").value = "";
   const height = getInputValue("parallelogram-height");
+
+  // validate input: base and height
+  if(isNaN(base) || isNaN(height)){
+    alert("Please insert a number");
+    return;
+  }
+
   //   clear the height value text
   document.getElementById("parallelogram-height").value = "";
 
@@ -68,21 +89,48 @@ function getInputValue(fieldId) {
   const value = parseFloat(inputValueText);
   return value;
 }
+// calculation Rhombus Area
+function calculateRhombusArea(){
+  const diagonalOne = getInputValue('diagonal-one')
+  const diagonalTWO = getInputValue('diagonal-two')
+
+  // validate input: diagonal and diagonal
+  if(isNaN(diagonalOne) || isNaN(diagonalTWO)){
+    alert("Please insert a number");
+    return;
+  }
+
+  const area = 0.5 * diagonalOne * diagonalTWO;
+  setElementInnerText("rhombus-area", area);
+}
+
 
 // calculation Pentagon Area
-function calculatePentagonArea(){
-  const penta = getInputValue('pentagon-penta')
-  const gonia = getInputValue('pentagon-gonia')
-  const area = 0.5 * penta * gonia
-  setElementInnerText('pentagon-area', area)
+function calculatePentagonArea() {
+  const penta = getInputValue("pentagon-penta");
+  const gonia = getInputValue("pentagon-gonia");
+   
+  // validate input: penta and gonia
+   if(isNaN(penta) || isNaN(gonia)){
+    alert("Please insert a number");
+    return;
+  }
+  const area = 0.5 * penta * gonia;
+  setElementInnerText("pentagon-area", area);
 }
 
 // calculation Ellipse Area
-function calculateEllipseArea(){
-  const majorRadius = getInputValue('ellipse-major-radius')
-  const minorRadius = getInputValue('ellipse-minor-radius')
-  const area = 3.14 * majorRadius * minorRadius
-  setElementInnerText('Ellipse-area', area)
+function calculateEllipseArea() {
+  const majorRadius = getInputValue("ellipse-major-radius");
+  const minorRadius = getInputValue("ellipse-minor-radius");
+  // validate input: majorRadius and minorRadius
+  if(isNaN(majorRadius) || isNaN(minorRadius)){
+    alert("Please insert a number");
+    return;
+  }
+  const area = 3.14 * majorRadius * minorRadius;
+  const areaTwoDecimal = area.toFixed(2);
+  setElementInnerText("Ellipse-area", areaTwoDecimal);
 }
 
 // reuseable set span text
@@ -90,3 +138,8 @@ function setElementInnerText(elementId, area) {
   const element = document.getElementById(elementId);
   element.innerText = area;
 }
+
+// Data validation
+// 1. set the proper type of the input field (number, date, email)
+// 2. check type using typeof
+// 3. isNaN: isNaN is checking weather input is not a number or not
